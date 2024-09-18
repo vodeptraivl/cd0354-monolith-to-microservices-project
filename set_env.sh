@@ -8,4 +8,6 @@ export AWS_BUCKET=arn:aws:s3:::volaproject3
 export AWS_REGION=us-west-2
 export AWS_PROFILE=default
 export JWT_SECRET=testing
+export DOCKER_PASSWORD=Vodeptrai@123
+export DOCKER_USERNAME=vodeptraivl@gmail.com
 export URL=http://localhost:8100
