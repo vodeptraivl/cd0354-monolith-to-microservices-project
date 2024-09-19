@@ -15,6 +15,8 @@ jobs:
       - run:
           name: Build and push Docker image
           command: |
+            echo "check"
+            node -v && npm -v
             echo "Inside the Build and push Docker image step"
             docker-compose -f docker-compose-build.yaml build --parallel
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
