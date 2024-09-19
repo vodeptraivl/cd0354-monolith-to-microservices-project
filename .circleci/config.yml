@@ -1,36 +1,21 @@
 version: 2.1
 
 jobs:
-  lint-app:
-    docker:
-      - image: circleci/node:13.8.0
+  build:           
+    docker:         
+      - image: cimg/base:current
+    working_directory: ~/app
     steps:
       - checkout
-  build-docker:
-    machine: true
-    steps:
-      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
-          name: Build docker container for each microservices
+          name: Install dependencies
+          command: echo "Build udagram frontend"
+      - run:
+          name: Build and push Docker image
           command: |
-            echo "--------- check -----------"
-            node -v && docker -v && docker-compose -v
-            
-            echo "--------- Installing dependencies-----------"
-            sudo curl -LO https://nodejs.org/dist/v13.14.0/node-v13.14.0-linux-x64.tar.xz
-            sudo tar -xvf node-v13.14.0-linux-x64.tar.xz
-            sudo cp -r node-v13.14.0-linux-x64/{bin,include,lib,share} /usr/
-            node --version => v13.14.0
-            sudo apt install nodejs
-            echo "--------- check -----------"
-            node -v && docker -v && docker-compose -v
-            
-
-workflows:
-  default:
-    jobs:
-      - lint-app
-      - build-docker:
-          requires: [lint-app]
-
-
+            echo "Inside the Build and push Docker image step"
+            docker-compose -f docker-compose-build.yaml build --parallel
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker-compose -f docker-compose-build.yaml push
