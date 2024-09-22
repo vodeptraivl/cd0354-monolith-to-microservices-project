@@ -113,7 +113,8 @@ kubectl apply -f ./udagram-api-feed/feed-deployment.yaml
 kubectl apply -f ./udagram-api-user/user-deployment.yaml
 kubectl apply -f ./udagram-reverseproxy/reverseproxy-deployment.yaml
 kubectl apply -f ./udagram-frontend/frontend-deployment.yaml
-
+kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
+kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
 
 kubectl delete deployments backend-feed
 kubectl delete deployments backend-user
@@ -125,3 +126,15 @@ kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreversep
 
 docker build . -t volavl/udagram-frontend:v6
 docker push volavl/udagram-frontend:v6
+
+kubectl delete services backend-feed
+kubectl delete services backend-user
+kubectl delete services frontend
+kubectl delete services kubernetes
+kubectl delete services publicfrontend
+kubectl delete services publicreverseproxy
+kubectl delete services reverseproxy
+kubectl delete services udagram-api-feed
+kubectl delete services udagram-api-user
+kubectl delete services udagram-backend-feed
+kubectl delete services udagram-frontend  
