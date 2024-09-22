@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   appName: 'Udagram',
-  apiHost: 'http://a905646e79fbf4f89a92072c90a08d60-2061693672.us-west-2.elb.amazonaws.com/api/v0'
+  apiHost: 'a5cfb9b69d7d14e6fafd2eb449a539dc-1853059459.us-west-2.elb.amazonaws.com'
 };
 
 /*
