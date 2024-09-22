@@ -15,4 +15,4 @@ services:
   frontend:
     build:
       context: ./udagram-frontend
-    image: volavl/udagram-frontend:local
+    image: volavl/udagram-frontend
