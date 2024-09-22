@@ -104,3 +104,24 @@ docker ps
 docker exec -it <container-id> bash
 # Navigate to the specific file to ensure that your edits are there. 
 cat <qualified-filename>
+
+
+kubectl apply -f aws-secret.yaml
+kubectl apply -f env-secret.yaml
+kubectl apply -f env-configmap.yaml
+kubectl apply -f ./udagram-api-feed/feed-deployment.yaml
+kubectl apply -f ./udagram-api-user/user-deployment.yaml
+kubectl apply -f ./udagram-reverseproxy/reverseproxy-deployment.yaml
+kubectl apply -f ./udagram-frontend/frontend-deployment.yaml
+
+
+kubectl delete deployments backend-feed
+kubectl delete deployments backend-user
+kubectl delete deployments frontend
+kubectl delete deployments reverseproxy
+
+kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
+kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
+
+docker build . -t volavl/udagram-frontend:v6
+docker push volavl/udagram-frontend:v6
