@@ -115,6 +115,7 @@ kubectl apply -f ./udagram-reverseproxy/reverseproxy-deployment.yaml
 kubectl apply -f ./udagram-frontend/frontend-deployment.yaml
 kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
 kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy
+kubectl autoscale deployment backend-user --cpu-percent=5 --min=1 --max=2
 
 kubectl delete deployments backend-feed
 kubectl delete deployments backend-user
