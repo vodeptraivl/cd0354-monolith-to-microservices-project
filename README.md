@@ -127,6 +127,11 @@ kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreversep
 docker build . -t volavl/udagram-frontend:v6
 docker push volavl/udagram-frontend:v6
 
+kubectl delete deployments backend-feed
+kubectl delete deployments backend-user
+kubectl delete deployments frontend
+kubectl delete deployments reverseproxy
+
 kubectl delete services backend-feed
 kubectl delete services backend-user
 kubectl delete services frontend
