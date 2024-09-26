@@ -71,13 +71,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    service: reverseproxy
-  name: reverseproxy
+    name: reverseproxy
+    labels:
+        app: reverseproxy
 spec:
-  ports:
-    - name: "8080"
-      port: 8080
-      targetPort: 8080
-  selector:
-    service: reverseproxy
+    ports:
+        - name: "8080"
+          port: 8080
+          targetPort: 8080
+          protocol: TCP
+    selector:
+        app: reverseproxy

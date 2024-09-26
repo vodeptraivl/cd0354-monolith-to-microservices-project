@@ -145,3 +145,6 @@ kubectl delete services udagram-backend-feed
 kubectl delete services udagram-frontend  
 
 aws eks update-kubeconfig --region us-west-2 --name volacls
+
+
+http://ae35ccbf2e9da4807b402a6793be6900-243270865.us-west-2.elb.amazonaws.com:8080/api/v0/feed
