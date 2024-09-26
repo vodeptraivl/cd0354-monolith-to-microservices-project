@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: arn:aws:s3:::volaproject3
+  AWS_BUCKET: arn:aws:s3:::volaproject
   AWS_PROFILE: default
   AWS_REGION: us-west-2
   JWT_SECRET: testing
   POSTGRES_DB: postgres
   POSTGRES_HOST: cdr.ckodc1qs7baz.us-west-2.rds.amazonaws.com
-  URL: http://af1e24cc65c644abf8f0507d82b8a5e5-2076379747.eu-west-2.elb.amazonaws.com:8100
+  URL: d3NfYWNjZXNzX2tleV9pZCA9IEFLSUFXRTU1Sk9aNEVGTTZSUVhBCmF3c19zZWNyZXRfYWNjZXNzX2tleSA9IGJuSzkrT2F5R1d4dzBDNi9QeGgzVy9lL1R5ZlJpSnJsR25LdVIxajI=
 metadata:
   name: env-config

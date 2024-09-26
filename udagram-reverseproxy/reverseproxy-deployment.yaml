@@ -15,8 +15,7 @@ spec:
       containers:
         - name: reverseproxy
           image: docker.io/volavl/reverseproxy:latest
-          ports:
-            - containerPort: 80
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "64Mi"
@@ -24,6 +23,8 @@ spec:
             limits:
               memory: "1024Mi"
               cpu: "500m"
+          ports:
+            - containerPort: 8080
 
 ---
 apiVersion: v1

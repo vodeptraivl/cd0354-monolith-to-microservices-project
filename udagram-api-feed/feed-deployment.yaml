@@ -15,8 +15,7 @@ spec:
       containers:
       - name: backend-feed
         image: docker.io/volavl/udagram-api-feed:latest
-        ports:
-        - containerPort: 80
+        imagePullPolicy: Always
         resources:
           requests:
               memory: "64Mi"
@@ -24,7 +23,14 @@ spec:
           limits:
             memory: "2048Mi"
             cpu: "500m"
-
+        envFrom:
+          - configMapRef:
+              name: env-config
+          - secretRef:
+              name: env-secret
+        ports:
+          - containerPort: 8080
+        restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
